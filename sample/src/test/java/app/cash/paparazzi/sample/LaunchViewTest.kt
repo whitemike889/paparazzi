@@ -54,4 +54,10 @@ class LaunchViewTest {
         theme = "android:Theme.Material.Light.NoActionBar"
     )
   }
+
+  @Test
+  fun chip() {
+    val launch = paparazzi.inflate<LinearLayout>(R.layout.launch)
+    paparazzi.snapshot(launch)
+  }
 }
