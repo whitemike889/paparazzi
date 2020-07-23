@@ -101,7 +101,14 @@ internal class PaparazziCallback(
 
   override fun getParser(layoutResource: ResourceValue): ILayoutPullParser? {
     try {
-      return LayoutPullParser.createFromFile(File(layoutResource.value))
+      val name = layoutResource.name
+      val namespace = layoutResource.namespace
+      val layoutFile = File(layoutResource.value)
+      val parser = LayoutPullParser.createFromFile(layoutFile)
+
+      parser.nextTag()
+
+      return parser
     } catch (e: FileNotFoundException) {
       return null
     }
